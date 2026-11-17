@@ -1,190 +1,92 @@
 import { useState } from 'react'
 import {
-  ArrowDown, ArrowRight, AudioLines, Check, ChevronDown, CirclePlay,
-  Globe2, Menu, Mic2, Play, Plus, Sparkles, WandSparkles, X, Zap,
+  ArrowRight, AudioLines, Check, ChevronDown, Globe2, Menu, Mic2,
+  Play, ShieldCheck, Sparkles, WandSparkles, X, Zap,
 } from 'lucide-react'
 
-const portrait = 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1000&q=90'
+const avatarImage = 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1000&q=90'
+
+const faqs = [
+  ['What is an AI avatar?', 'An AI avatar is a digital presenter created from a photo or video. You can give it a script and generate a video of the avatar delivering your message.'],
+  ['What do I need to create one?', 'Start with a clear photo of a person who has given permission to use their likeness. Add a script or audio, choose your available settings, and generate your video.'],
+  ['Can I use my avatar videos commercially?', 'That depends on your plan, the assets you use, and the rights you have to the person’s image and voice. Check the product terms before using generated videos commercially.'],
+  ['Can I use someone else’s photo or voice?', 'Only with their explicit permission. Avatars should not be used to impersonate someone, mislead viewers, or create deceptive content.'],
+]
 
 function App() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [faqOpen, setFaqOpen] = useState<number | null>(0)
+  const [activeExample, setActiveExample] = useState('Creator')
 
-  const scrollToStudio = () => document.getElementById('studio')?.scrollIntoView({ behavior: 'smooth' })
+  const scrollToCreate = () => document.getElementById('create')?.scrollIntoView({ behavior: 'smooth' })
+  const closeMenu = () => setMenuOpen(false)
 
   return (
     <main>
-      <div className="announcement">
-        <span className="announcement-pill"><Sparkles size={12} /> NEW</span>
-        Meet your digital twin. Create your first avatar in minutes.
-        <a href="#how-it-works">See how it works <ArrowRight size={13} /></a>
-      </div>
-
+      <div className="announcement"><span><Sparkles size={12} /> INTRODUCING AI AVATARS</span><i /> Turn a photo and a script into a video that speaks for you. <a href="#how-it-works">Explore the workflow <ArrowRight size={13} /></a></div>
       <header className="site-header">
-        <a className="brand" href="#" aria-label="Avatara home">
-          <span className="brand-mark"><WandSparkles size={19} strokeWidth={2.2} /></span>
-          avatara<span className="brand-dot">.</span>
-        </a>
+        <a className="brand" href="#" aria-label="Avatara home"><span className="brand-mark"><WandSparkles size={19} /></span> avatara<span>.</span></a>
         <nav className={menuOpen ? 'nav-links open' : 'nav-links'}>
-          <a href="#features" onClick={() => setMenuOpen(false)}>Features</a>
-          <a href="#how-it-works" onClick={() => setMenuOpen(false)}>How it works</a>
-          <a href="#showcase" onClick={() => setMenuOpen(false)}>Examples</a>
-          <a href="#faq" onClick={() => setMenuOpen(false)}>FAQ</a>
+          <a href="#features" onClick={closeMenu}>Features</a><a href="#how-it-works" onClick={closeMenu}>How it works</a><a href="#examples" onClick={closeMenu}>Use cases</a><a href="#pricing" onClick={closeMenu}>Pricing</a>
         </nav>
-        <div className="header-actions">
-          <a className="login-link" href="#studio">Log in</a>
-          <button className="button button-dark button-small" onClick={scrollToStudio}>Create an avatar <ArrowRight size={15} /></button>
-        </div>
-        <button className="mobile-menu" onClick={() => setMenuOpen(!menuOpen)} aria-label="Toggle navigation">
-          {menuOpen ? <X /> : <Menu />}
-        </button>
+        <div className="header-actions"><a href="#create" className="login-link">Sign in</a><button className="button button-dark button-small" onClick={scrollToCreate}>Create your avatar <ArrowRight size={15} /></button></div>
+        <button className="mobile-menu" onClick={() => setMenuOpen(!menuOpen)} aria-label="Toggle navigation">{menuOpen ? <X /> : <Menu />}</button>
       </header>
 
       <section className="hero">
-        <div className="hero-glow" />
+        <div className="hero-orb orb-a" /><div className="hero-orb orb-b" />
         <div className="hero-copy">
-          <div className="eyebrow"><span className="eyebrow-spark"><Sparkles size={13} /></span> YOUR PRESENCE, REIMAGINED</div>
-          <h1>Be everywhere.<br /><span>Without being</span> <em>there.</em></h1>
-          <p className="hero-description">Turn a single photo into an AI avatar that speaks, moves, and connects just like you. Your digital presence starts here.</p>
-          <div className="hero-actions">
-            <button className="button button-primary" onClick={scrollToStudio}>Create your free avatar <ArrowRight size={17} /></button>
-            <a href="#showcase" className="watch-link"><span><Play size={13} fill="currentColor" /></span> See what's possible</a>
-          </div>
-          <div className="hero-proof">
-            <div className="avatar-stack">
-              <img src="https://i.pravatar.cc/80?img=47" alt="" />
-              <img src="https://i.pravatar.cc/80?img=12" alt="" />
-              <img src="https://i.pravatar.cc/80?img=44" alt="" />
-              <img src="https://i.pravatar.cc/80?img=5" alt="" />
+          <div className="eyebrow"><span className="eyebrow-icon"><Sparkles size={13} /></span> YOUR AI VIDEO CREATION STUDIO</div>
+          <h1>Your words.<br /><span>Your digital</span> <em>presence.</em></h1>
+          <p className="hero-description">Create expressive AI avatar videos from a photo and a script. Make every update, lesson, and idea feel more personal — without stepping in front of a camera every time.</p>
+          <div className="hero-actions"><button className="button button-primary" onClick={scrollToCreate}>Create an AI avatar <ArrowRight size={17} /></button><a className="watch-link" href="#product-demo"><span><Play size={12} fill="currentColor" /></span> Watch the product preview</a></div>
+          <div className="hero-points"><span><Check size={14} /> Photo-based avatars</span><span><Check size={14} /> Script-to-video workflow</span><span><Check size={14} /> Made for creators</span></div>
+        </div>
+        <div className="hero-product" id="product-demo">
+          <div className="product-window">
+            <div className="window-top"><div className="window-dots"><i /><i /><i /></div><span>AVATARA STUDIO <b>PREVIEW</b></span><span className="window-status"><i /> Ready</span></div>
+            <div className="preview-stage">
+              <img src={avatarImage} alt="Example portrait used as an AI avatar preview" />
+              <div className="preview-vignette" />
+              <div className="preview-caption"><span>YOUR AVATAR</span><strong>Ready to tell your story.</strong></div>
+              <button className="preview-play" aria-label="Preview example"><Play size={19} fill="currentColor" /></button>
+              <div className="preview-label"><Sparkles size={12} /> SAMPLE AVATAR VISUAL</div>
             </div>
-            <div><strong>Made for your next chapter</strong><small>Creators, founders & curious minds</small></div>
+            <div className="product-controls"><div className="control-person"><img src={avatarImage} alt="" /><span><b>My avatar</b><small>Portrait preview</small></span></div><div className="control-wave"><AudioLines size={16} /><span><i /><i /><i /><i /><i /><i /><i /><i /><i /><i /><i /><i /></span><small>Voice preview</small></div><div className="control-ready"><Check size={14} /></div></div>
           </div>
-        </div>
-
-        <div className="hero-visual" aria-label="AI avatar preview">
-          <div className="visual-orbit orbit-one" />
-          <div className="visual-orbit orbit-two" />
-          <div className="portrait-frame">
-            <img src={portrait} alt="Portrait preview of an AI avatar" />
-            <div className="portrait-shine" />
-          </div>
-          <div className="float-card speaking-card">
-            <span className="card-icon"><AudioLines size={17} /></span>
-            <div><strong>Sounds like you</strong><small>Natural voice · 24 languages</small></div>
-            <span className="live-dot" />
-          </div>
-          <div className="float-card ready-card">
-            <span className="ready-check"><Check size={14} /></span>
-            <div><strong>Avatar ready</strong><small>That was quick!</small></div>
-          </div>
-          <div className="float-tag tag-top"><Sparkles size={13} /> AI-powered</div>
-          <div className="float-tag tag-bottom"><span className="pulse-dot" /> Lifelike motion</div>
-        </div>
-        <div className="hero-bottom-note"><span>01 / 04</span><span className="note-line" /><span>SCROLL TO EXPLORE <ArrowDown size={13} /></span></div>
-      </section>
-
-      <section className="trust-strip">
-        <p>A new way to show up online</p>
-        <div className="trust-items">
-          <span><Zap size={16} /> QUICK TO CREATE</span>
-          <span><Globe2 size={16} /> SPEAKS YOUR LANGUAGE</span>
-          <span><Mic2 size={16} /> YOUR VOICE, YOUR VIBE</span>
-          <span><Sparkles size={16} /> MADE TO FEEL HUMAN</span>
+          <div className="floating-chip chip-language"><Globe2 size={15} /><span><b>Speak globally</b><small>Multilingual workflow</small></span></div>
+          <div className="floating-chip chip-ai"><span className="chip-spark"><Sparkles size={15} /></span><span><b>AI-powered creation</b><small>From photo to video</small></span></div>
+          <div className="hero-note">A NEW WAY TO SHOW UP <span /> 01 / 04</div>
         </div>
       </section>
 
-      <section className="section features-section" id="features">
-        <div className="section-heading">
-          <div className="eyebrow">A LITTLE BIT OF MAGIC</div>
-          <h2>Your face. Your voice.<br /><span>Your possibilities.</span></h2>
-          <p>Everything you need to create content that feels personal, even when you can't be there to make it.</p>
-        </div>
+      <section className="trust-strip"><span>MADE FOR THE WAY YOU CREATE</span><div><b><Zap size={15} /> QUICK WORKFLOW</b><b><Mic2 size={15} /> VOICE-READY</b><b><Globe2 size={15} /> MULTILINGUAL</b><b><ShieldCheck size={15} /> CONSENT FIRST</b></div></section>
+
+      <section className="features-section section" id="features">
+        <div className="section-heading"><div className="eyebrow">YOUR CREATION TOOLKIT</div><h2>From a simple photo<br />to a <span>whole new presence.</span></h2><p>Everything comes together in one simple workflow. Create your avatar, prepare what it says, and turn your message into video.</p></div>
         <div className="feature-grid">
-          <article className="feature-card feature-large">
-            <div className="feature-topline"><span className="feature-icon"><WandSparkles size={19} /></span><span className="feature-index">01 / CREATE</span></div>
-            <div className="feature-card-copy"><h3>One photo.<br />A whole new you.</h3><p>Upload a portrait and let AI turn it into a digital version of you, ready for the spotlight.</p></div>
-            <div className="mini-avatar-preview"><div className="mini-photo"><img src={portrait} alt="" /></div><div className="mini-spark"><Sparkles size={17} /></div><div className="mini-arrow"><ArrowRight size={17} /></div><div className="mini-ai"><WandSparkles size={25} /></div></div>
-          </article>
-          <article className="feature-card feature-blue">
-            <div className="feature-topline"><span className="feature-icon"><AudioLines size={19} /></span><span className="feature-index">02 / SPEAK</span></div>
-            <div className="feature-card-copy"><h3>Give your words<br />a voice.</h3><p>Bring your script to life with expressive, natural-sounding speech.</p></div>
-            <div className="wave-visual"><div className="wave-label"><span className="wave-live" /> VOICE PREVIEW</div><div className="wave-bars">{Array.from({ length: 42 }, (_, i) => <i key={i} style={{ height: `${12 + Math.abs(Math.sin(i * 1.9) * 44)}px` }} />)}</div><div className="wave-time"><span>00:04</span><span>00:18</span></div></div>
-          </article>
-          <article className="feature-card feature-pale">
-            <div className="feature-topline"><span className="feature-icon"><Globe2 size={19} /></span><span className="feature-index">03 / CONNECT</span></div>
-            <div className="feature-card-copy"><h3>Speak to the<br />whole world.</h3><p>Share your message in multiple languages and make every word count.</p></div>
-            <div className="language-pills"><span>English <Check size={12} /></span><span>Español</span><span>हिन्दी</span><span>Français</span><span>+ more</span></div>
-          </article>
+          <article className="feature-card feature-photo"><div className="feature-top"><span className="feature-icon"><WandSparkles size={19} /></span><small>01 / CREATE</small></div><h3>A familiar face.<br />A fresh beginning.</h3><p>Start with a clear portrait and create an avatar for your next video.</p><div className="photo-composition"><div className="source-photo"><img src={avatarImage} alt="Portrait source example" /><span>YOUR PHOTO</span></div><div className="transform-arrow"><ArrowRight size={18} /></div><div className="avatar-token"><Sparkles size={25} /><small>AI AVATAR</small></div></div></article>
+          <article className="feature-card feature-script"><div className="feature-top"><span className="feature-icon"><AudioLines size={19} /></span><small>02 / MAKE IT SPEAK</small></div><h3>Your script.<br />Your message.</h3><p>Write what you want to say or bring in audio for your video workflow.</p><div className="script-card"><div className="script-head"><span><i /> SCRIPT</span><small>EDITABLE PREVIEW</small></div><p>“Hey there! Here's something<br />I wanted to share with you...”</p><div className="script-wave">{Array.from({length:34},(_,i)=><i key={i} style={{height:`${9+Math.abs(Math.sin(i*1.7)*28)}px`}} />)}</div></div></article>
+          <article className="feature-card feature-share"><div className="feature-top"><span className="feature-icon"><Globe2 size={19} /></span><small>03 / SHARE</small></div><h3>One message.<br />More places.</h3><p>Prepare content for social posts, explainers, learning, and team updates.</p><div className="share-tags"><span>Social videos</span><span>Explainers</span><span>Learning</span><span>Announcements</span><span>+ your ideas</span></div></article>
         </div>
       </section>
 
-      <section className="how-section" id="how-it-works">
-        <div className="how-inner">
-          <div className="how-copy">
-            <div className="eyebrow">NO STUDIO. NO STRESS.</div>
-            <h2>Three steps.<br /><span>One new you.</span></h2>
-            <p>We kept things beautifully simple. You bring the photo and the words. We'll take it from there.</p>
-            <button className="button button-dark" onClick={scrollToStudio}>Make your first avatar <ArrowRight size={16} /></button>
-          </div>
-          <div className="steps">
-            <div className="step">
-              <span className="step-number">01</span><div><h3>Upload your photo</h3><p>Choose a clear, front-facing photo. That's your avatar's starting point.</p></div><span className="step-symbol"><Plus size={19} /></span>
-            </div>
-            <div className="step">
-              <span className="step-number">02</span><div><h3>Add your script</h3><p>Type what you want to say or use your own voice recording.</p></div><span className="step-symbol"><AudioLines size={19} /></span>
-            </div>
-            <div className="step">
-              <span className="step-number">03</span><div><h3>Generate & share</h3><p>Watch your avatar come to life, then download and share your video.</p></div><span className="step-symbol"><Sparkles size={19} /></span>
-            </div>
-          </div>
-        </div>
+      <section className="demo-section" id="how-it-works"><div className="demo-inner">
+        <div className="demo-copy"><div className="eyebrow">A SIMPLE CREATION FLOW</div><h2>Less setup.<br /><span>More showing up.</span></h2><p>Go from your starting image to a shareable video in a few clear steps.</p><div className="demo-steps"><div><b>01</b><span><strong>Choose a portrait</strong><small>Use an image you own or have permission to use.</small></span></div><div><b>02</b><span><strong>Add your words</strong><small>Write a script or add a voice recording.</small></span></div><div><b>03</b><span><strong>Generate your video</strong><small>Review your result and get it ready to share.</small></span></div></div><button className="button button-dark" onClick={scrollToCreate}>Explore the creation flow <ArrowRight size={16} /></button></div>
+        <div className="workflow-visual"><div className="workflow-card workflow-input"><span className="workflow-label">01 — INPUT PHOTO</span><img src={avatarImage} alt="Example portrait input" /><div><Check size={13} /> Portrait selected</div></div><div className="workflow-connector"><span><WandSparkles size={20} /></span><i /></div><div className="workflow-card workflow-output"><span className="workflow-label">02 — AVATAR VIDEO</span><div className="output-image"><img src={avatarImage} alt="Example avatar video portrait" /><span className="output-play"><Play size={17} fill="currentColor" /></span><span className="output-caption">Your message, brought to life.</span></div><div className="output-meta"><span><AudioLines size={14} /> Voice & script</span><span>VIDEO PREVIEW</span></div></div><div className="workflow-stamp"><Sparkles size={14} /> YOUR IDEA, IN MOTION</div></div>
+      </div></section>
+
+      <section className="examples-section section" id="examples"><div className="examples-heading"><div><div className="eyebrow">ONE AVATAR, MANY POSSIBILITIES</div><h2>Made for your <span>kind of content.</span></h2></div><p>Build a more consistent video presence for the moments that matter.</p></div>
+        <div className="example-tabs">{['Creator','Business','Educator'].map(item=><button className={activeExample===item?'active':''} onClick={()=>setActiveExample(item)} key={item}>{item}</button>)}</div>
+        <div className="examples-panel"><div className="example-visual"><img src={activeExample==='Creator'?'https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1000&q=85':activeExample==='Business'?'https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1000&q=85':'https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1000&q=85'} alt={activeExample+' use case'} /><span className="example-image-label"><Sparkles size={12} /> AVATAR VIDEO USE CASE</span></div><div className="example-content"><span className="example-number">0{['Creator','Business','Educator'].indexOf(activeExample)+1} / USE CASE</span><h3>{activeExample==='Creator'?'Keep your audience in the loop.':activeExample==='Business'?'Make updates feel more personal.':'Bring lessons to life.'}</h3><p>{activeExample==='Creator'?'Create intros, regular updates, and social content while keeping your visual identity consistent.':activeExample==='Business'?'Prepare product explainers, team announcements, and repeatable customer communication.':'Turn written lessons and learning materials into approachable video presentations.'}</p><ul><li><Check size={15}/> A consistent on-camera presence</li><li><Check size={15}/> Repeatable video creation workflow</li><li><Check size={15}/> More time for the work behind the message</li></ul><button className="text-link" onClick={scrollToCreate}>Start creating <ArrowRight size={16}/></button></div></div>
       </section>
 
-      <section className="showcase-section section" id="showcase">
-        <div className="showcase-heading">
-          <div><div className="eyebrow">IMAGINE THE POSSIBILITIES</div><h2>More you. Less <span>busywork.</span></h2></div>
-          <p>From your next big idea to the everyday hello, there's room for your avatar everywhere.</p>
-        </div>
-        <div className="showcase-grid">
-          <article className="showcase-card showcase-main"><img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1000&q=85" alt="Creative team collaborating" /><div className="showcase-overlay"><span>01 — FOR CREATORS</span><h3>Show up for<br />your audience.</h3></div></article>
-          <article className="showcase-card showcase-secondary"><img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=900&q=85" alt="Team meeting in a bright office" /><div className="showcase-overlay"><span>02 — FOR TEAMS</span><h3>Make every update<br />feel human.</h3></div></article>
-          <article className="showcase-card showcase-tertiary"><img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=900&q=85" alt="Modern workspace" /><div className="showcase-overlay"><span>03 — FOR BUSINESS</span><h3>Your message,<br />at any scale.</h3></div></article>
-        </div>
-      </section>
+      <section className="pricing-section" id="pricing"><div className="section pricing-inner"><div className="section-heading"><div className="eyebrow">SIMPLE TO GET STARTED</div><h2>Make room for <span>what's next.</span></h2><p>Start by exploring the experience. Plan details can grow with the product.</p></div><div className="pricing-card"><div><span className="pricing-tag"><Sparkles size={13}/> EARLY ACCESS</span><h3>Start creating</h3><p>Explore the AI avatar workflow and see what you can make.</p></div><div className="pricing-includes"><span><Check size={15}/> Photo-based avatar workflow</span><span><Check size={15}/> Script and voice input concept</span><span><Check size={15}/> Video preview experience</span></div><button className="button button-primary" onClick={scrollToCreate}>Explore Avatara <ArrowRight size={16}/></button><small>Final plan limits and pricing will be shown when the product plans are ready.</small></div></div></section>
 
-      <section className="studio-section" id="studio">
-        <div className="studio-glow" />
-        <div className="studio-content">
-          <div className="eyebrow"><Sparkles size={13} /> YOUR STORY STARTS HERE</div>
-          <h2>Ready to meet<br />your <em>other you?</em></h2>
-          <p>Your first avatar is just a few clicks away. No fancy equipment, no complicated setup.</p>
-          <button className="button button-white" onClick={() => alert('Your avatar studio is the next step to connect here.')}>Create my avatar <ArrowRight size={17} /></button>
-          <small><Check size={13} /> Start creating in minutes</small>
-        </div>
-        <div className="studio-decoration"><div className="studio-ring ring-a" /><div className="studio-ring ring-b" /><div className="studio-spark spark-a"><Sparkles /></div><div className="studio-spark spark-b"><Plus /></div><div className="studio-orbit-card"><WandSparkles size={27} /><span>YOUR NEXT<br />CHAPTER</span></div></div>
-      </section>
+      <section className="cta-section" id="create"><div className="cta-glow"/><div className="cta-content"><div className="eyebrow"><Sparkles size={13}/> YOUR NEXT VIDEO STARTS HERE</div><h2>Ready to give your<br />ideas a <em>face?</em></h2><p>Bring your photo and your message. Your next chapter in video starts with Avatara.</p><a className="button button-white" href="mailto:hello@ai-avatar.app?subject=Avatara%20early%20access">Get early access <ArrowRight size={17}/></a><small><ShieldCheck size={13}/> Only use photos and voices with permission.</small></div><div className="cta-art"><div className="cta-circle circle-one"/><div className="cta-circle circle-two"/><div className="cta-avatar"><img src={avatarImage} alt="Avatar portrait example"/><span><Sparkles size={14}/> AVATARA</span></div><div className="cta-float"><AudioLines size={19}/></div></div></section>
 
-      <section className="faq-section section" id="faq">
-        <div className="faq-intro"><div className="eyebrow">GOOD QUESTION</div><h2>Curious?<br /><span>We've got you.</span></h2><p>A few things you might be wondering before you jump in.</p></div>
-        <div className="faq-list">
-          {[
-            ['What is an AI avatar?', 'An AI avatar is a digital version of you that can speak a script and appear in generated videos. You provide a photo and text or audio, and the technology creates the video.'],
-            ['What do I need to get started?', 'A clear photo is a great starting point. Depending on the creation flow, you can also add a script or voice recording to make your avatar speak.'],
-            ['Can I use my avatar for content?', 'Yes. You can create avatar videos for explainers, social content, announcements, and other creative projects. Always make sure you have the rights and consent needed for the photo and voice you use.'],
-            ['Is my photo kept private?', 'Your privacy matters. Before uploading personal images, review the product privacy policy and retention details so you know how your media is stored and used.'],
-          ].map(([question, answer], index) => (
-            <div className={faqOpen === index ? 'faq-item active' : 'faq-item'} key={question}>
-              <button onClick={() => setFaqOpen(faqOpen === index ? null : index)}><span>{question}</span><span className="faq-toggle">{faqOpen === index ? <X size={16} /> : <Plus size={16} />}</span></button>
-              {faqOpen === index && <p>{answer}</p>}
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <footer className="footer">
-        <div className="footer-main"><a className="brand" href="#"><span className="brand-mark"><WandSparkles size={19} /></span> avatara<span className="brand-dot">.</span></a><p>Your presence, reimagined.<br />A little more you, everywhere.</p><div className="footer-links"><a href="#features">Features</a><a href="#how-it-works">How it works</a><a href="#faq">FAQ</a><a href="#studio">Get started</a></div></div>
-        <div className="footer-bottom"><span>© 2026 Avatara. Made for what's next.</span><span>Made with a little <Sparkles size={12} /> magic.</span></div>
-      </footer>
+      <section className="faq-section section" id="faq"><div className="faq-intro"><div className="eyebrow">GOOD TO KNOW</div><h2>Questions?<br/><span>We've got you.</span></h2><p>A few useful details before you start creating.</p></div><div className="faq-list">{faqs.map(([q,a],i)=><div className={faqOpen===i?'faq-item active':'faq-item'} key={q}><button onClick={()=>setFaqOpen(faqOpen===i?null:i)}><span>{q}</span><span className="faq-toggle">{faqOpen===i?<X size={15}/>:<ChevronDown size={16}/>}</span></button>{faqOpen===i&&<p>{a}</p>}</div>)}</div></section>
+      <footer className="footer"><div className="footer-main"><a className="brand" href="#"><span className="brand-mark"><WandSparkles size={19}/></span> avatara<span>.</span></a><p>Your words. Your digital presence.<br/>Create with care. Share with confidence.</p><div className="footer-links"><a href="#features">Features</a><a href="#how-it-works">How it works</a><a href="#pricing">Pricing</a><a href="#faq">FAQ</a></div></div><div className="footer-bottom"><span>© 2026 Avatara. All rights reserved.</span><span>Built for ideas worth sharing <Sparkles size={12}/></span></div></footer>
     </main>
   )
 }
