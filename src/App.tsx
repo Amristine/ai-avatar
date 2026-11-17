@@ -62,76 +62,67 @@ function App() {
       </section>
 
       <section className="product-section section">
-        <div className="section-heading">
-          <span className="section-kicker">01 / THE EXPERIENCE</span>
-          <h2>From a single photo<br/><em>to a whole new presence.</em></h2>
-          <p>Bring your portrait and your words together in a simple creative flow.</p>
+        <div className="section-intro-row">
+          <div><span className="section-kicker">01 — THE AVATARA EXPERIENCE</span><h2>One photo is all<br/>it <em>takes to begin.</em></h2></div>
+          <p>Your portrait gives your avatar a face. Your script gives it something to say. Avatara brings both together in a video made to feel personal.</p>
         </div>
-        <div className="experience-panel">
-          <div className="experience-portrait">
-            <img src={portrait} alt="Example portrait used to illustrate an AI avatar"/>
-            <span className="image-label">YOUR PHOTO</span>
-            <div className="portrait-caption"><span>One clear portrait</span><small>Start with an image you have permission to use.</small></div>
+        <div className="product-showcase">
+          <div className="showcase-photo">
+            <img src={portrait} alt="Portrait illustrating an avatar source photo"/>
+            <span className="showcase-tag">01 / YOUR PORTRAIT</span>
+            <div className="photo-note"><span>Start with a photo</span><small>Choose an image you have permission to use.</small></div>
           </div>
-          <div className="experience-flow">
-            <div className="flow-icon"><Image size={17}/></div><span/>
-            <div className="flow-spark"><Sparkles size={18}/></div><span/>
-            <div className="flow-icon"><Mic2 size={17}/></div><span/>
-            <div className="flow-icon flow-result"><Video size={17}/></div>
+          <div className="showcase-connector"><span><Sparkles size={19}/></span><i/></div>
+          <div className="showcase-screen">
+            <div className="screen-top"><span className="screen-dot"/><span className="screen-dot"/><span className="screen-dot"/><small>AVATARA STUDIO</small></div>
+            <div className="screen-preview"><img src={portrait} alt="Illustrative AI avatar video preview"/><span className="preview-play"><Play size={18} fill="currentColor"/></span><span className="preview-label">VIDEO PREVIEW</span></div>
+            <div className="screen-bottom"><div><span>YOUR AVATAR VIDEO</span><strong>Your message, brought to life.</strong></div><span className="screen-duration">00:24</span></div>
           </div>
-          <div className="experience-output">
-            <img src={portrait} alt="Illustrative avatar video portrait"/>
-            <div className="output-shade"/>
-            <span className="image-label">YOUR AVATAR VIDEO</span>
-            <div className="output-play"><Play size={16} fill="currentColor"/></div>
-            <div className="output-caption"><span>Your message, brought to life.</span><small>Script or audio becomes the story.</small></div>
-          </div>
+          <div className="showcase-caption">A simple creative flow — from the image you choose to the message you want to share.</div>
         </div>
-        <div className="process-legend">
-          <div><span>01</span><strong>Choose your look</strong><small>A photo you have permission to use</small></div>
-          <div><span>02</span><strong>Add your message</strong><small>Bring a script or audio</small></div>
-          <div><span>03</span><strong>Create your video</strong><small>Review and share your result</small></div>
+        <div className="feature-row">
+          <article><span className="feature-icon"><Image size={18}/></span><div><strong>Your likeness</strong><p>Start with a portrait you own or have permission to use.</p></div></article>
+          <article><span className="feature-icon"><Mic2 size={18}/></span><div><strong>Your message</strong><p>Bring the words with a script or audio recording.</p></div></article>
+          <article><span className="feature-icon"><Video size={18}/></span><div><strong>Your video</strong><p>Review the result and share it with your audience.</p></div></article>
         </div>
-        <p className="visual-disclaimer">Visuals are illustrative and do not represent a live generated avatar result.</p>
+        <p className="visual-disclaimer">Concept preview for illustration. It is not a live generated video.</p>
       </section>
 
       <section className="statement-section">
-        <div className="statement-inner">
-          <span className="section-kicker">02 / WHY AVATARA</span>
-          <h2>Be there for the message.<br/><em>Even when you can’t be on camera.</em></h2>
-          <p>Make space for the ideas you want to share, the people you want to reach, and the moments that deserve your presence.</p>
-        </div>
-        <div className="statement-sun" aria-hidden="true"/>
+        <div className="statement-image"><img src="https://images.unsplash.com/photo-1490730141103-6cac27aaab94?auto=format&fit=crop&w=1500&q=85" alt="Sunlit open landscape"/></div>
+        <div className="statement-overlay"/>
+        <div className="statement-inner"><span className="section-kicker">02 — MORE THAN A VIDEO</span><h2>Show up with<br/><em>a little more you.</em></h2><p>For the update you need to send, the lesson you want to teach, or the idea that deserves a face and a voice.</p><a href="#use-cases">Find your use for Avatara <ArrowRight size={15}/></a></div>
+        <span className="statement-index">A NEW WAY TO BE PRESENT</span>
       </section>
 
       <section className="use-section section" id="use-cases">
-        <div className="section-heading use-heading">
-          <span className="section-kicker">03 / MADE FOR YOUR WORLD</span>
-          <h2>One avatar.<br/><em>Many ways to show up.</em></h2>
-          <p>From a quick update to a thoughtful lesson, make video feel a little more human.</p>
+        <div className="section-intro-row use-intro">
+          <div><span className="section-kicker">03 — MADE FOR YOUR WORLD</span><h2>One avatar.<br/><em>Many stories.</em></h2></div>
+          <p>From a creator’s next post to a team’s product update, make every message feel a little more human.</p>
         </div>
-        <div className="use-grid">{scenes.map((scene, index) => <article className="use-card" key={scene.name}><div className="use-image"><img src={scene.image} alt={scene.name}/><span>0{index+1}</span><a href="#get-started" aria-label={'Get started for '+scene.name}><ArrowUpRight size={17}/></a></div><div className="use-copy"><span>{scene.name}</span><h3>{scene.title}</h3><p>{scene.copy}</p></div></article>)}</div>
+        <div className="use-grid">{scenes.map((scene,index)=><article className="use-card" key={scene.name}><div className="use-image"><img src={scene.image} alt={scene.name}/><span className="use-number">0{index+1}</span><div className="use-image-shade"/><div className="use-image-copy"><small>{scene.name}</small><h3>{scene.title}</h3><p>{scene.copy}</p><a href="#get-started">Make it yours <ArrowUpRight size={15}/></a></div></div></article>)}</div>
       </section>
 
       <section className="how-section" id="how">
         <div className="how-inner">
-          <div className="how-title"><span className="section-kicker">04 / SIMPLE BY DESIGN</span><h2>Three steps.<br/><em>One more you.</em></h2><p>A straightforward path from your first photo to a video ready to share.</p></div>
+          <div className="how-title"><span className="section-kicker">04 — SIMPLE BY DESIGN</span><h2>From photo<br/>to <em>hello.</em></h2><p>No studio setup. No complicated production checklist. Just three clear steps to get your message ready.</p><a href="#get-started" className="text-cta">Start creating <ArrowRight size={15}/></a></div>
           <div className="how-list">
-            <article><span>01</span><div><h3>Choose your portrait</h3><p>Upload a clear image of yourself or someone who has given consent.</p></div><ArrowUpRight size={17}/></article>
-            <article><span>02</span><div><h3>Give your avatar a message</h3><p>Add a script or audio to shape what your avatar says.</p></div><ArrowUpRight size={17}/></article>
-            <article><span>03</span><div><h3>Generate and share</h3><p>Review your video, make it yours, and share it with your audience.</p></div><ArrowUpRight size={17}/></article>
+            <article><span className="how-number">01</span><div className="how-step-icon"><Image size={20}/></div><div><h3>Choose your portrait</h3><p>Upload a clear image of yourself or someone who has given consent.</p></div><ArrowUpRight size={18}/></article>
+            <article><span className="how-number">02</span><div className="how-step-icon"><Mic2 size={20}/></div><div><h3>Add the words</h3><p>Write a script or add audio to give your avatar its message.</p></div><ArrowUpRight size={18}/></article>
+            <article><span className="how-number">03</span><div className="how-step-icon"><Video size={20}/></div><div><h3>Create and share</h3><p>Review your video and share it wherever your audience is.</p></div><ArrowUpRight size={18}/></article>
           </div>
         </div>
       </section>
 
       <section className="faq-section section" id="faq">
-        <div className="faq-heading"><span className="section-kicker">A FEW THINGS TO KNOW</span><h2>Good questions.<br/><em>Clear answers.</em></h2></div>
-        <div className="faq-list">{faqs.map(([question, answer], index)=><article className={faqOpen===index?'faq-item active':'faq-item'} key={question}><button onClick={()=>setFaqOpen(faqOpen===index?null:index)} aria-expanded={faqOpen===index}><span>{question}</span><span>{faqOpen===index?<X size={15}/>:<ChevronDown size={16}/>}</span></button>{faqOpen===index&&<p>{answer}</p>}</article>)}</div>
+        <div className="faq-heading"><span className="section-kicker">A FEW THINGS TO KNOW</span><h2>Curious?<br/><em>We’ve got you.</em></h2><p>Some quick answers before you create your first avatar.</p><div className="faq-aside"><span><Sparkles size={17}/></span><div><strong>Made to feel simple.</strong><small>Have another question? We’d love to hear from you.</small><a href="mailto:hello@ai-avatar.app">Talk to our team <ArrowUpRight size={13}/></a></div></div></div>
+        <div className="faq-list">{faqs.map(([question,answer],index)=><article className={faqOpen===index?'faq-item active':'faq-item'} key={question}><button onClick={()=>setFaqOpen(faqOpen===index?null:index)} aria-expanded={faqOpen===index}><span className="faq-index">0{index+1}</span><span className="faq-question">{question}</span><span className="faq-toggle">{faqOpen===index?<X size={15}/>:<ChevronDown size={16}/>}</span></button>{faqOpen===index&&<p>{answer}</p>}</article>)}</div>
       </section>
 
       <section className="final-cta" id="get-started">
-        <div className="final-cta-inner"><span className="section-kicker">YOUR NEXT VIDEO STARTS HERE</span><h2>Let your story<br/><em>travel further.</em></h2><p>Be among the first to experience a more personal way to create video.</p><a className="light-button" href="mailto:hello@ai-avatar.app?subject=Avatara%20early%20access">Get early access <ArrowUpRight size={16}/></a><span className="cta-note">Use only photos and voices you have permission to use.</span></div>
-        <div className="cta-orbit" aria-hidden="true"><span/><span/><span/></div>
+        <div className="cta-image"><img src="https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?auto=format&fit=crop&w=1600&q=85" alt="Soft sunlit landscape"/></div><div className="cta-image-shade"/>
+        <div className="final-cta-inner"><span className="section-kicker">YOUR STORY STARTS HERE</span><h2>Ready to put<br/><em>yourself in the picture?</em></h2><p>Create a video that carries your face, your voice and your message.</p><a className="light-button" href="mailto:hello@ai-avatar.app?subject=Avatara%20early%20access">Get early access <ArrowUpRight size={16}/></a><span className="cta-note">Only use images and voices you have permission to use.</span></div>
+        <div className="cta-stamp"><span>AVA</span><strong>YOUR<br/>STORY</strong><small>MADE PERSONAL</small></div>
       </section>
 
       <footer className="footer"><a className="wordmark" href="#"><span className="wordmark-mark">a</span>vatara<span className="wordmark-period">.</span></a><span>© 2026 Avatara. Create with care.</span><div><a href="#product">Product</a><a href="#how">How it works</a><a href="#faq">FAQ</a></div></footer>
