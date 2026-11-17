@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { ArrowRight, ArrowUpRight, Check, ChevronDown, Menu, Play, Sparkles, X } from 'lucide-react'
+import { ArrowRight, ArrowUpRight, ChevronDown, Menu, Play, Sparkles, X } from 'lucide-react'
 
 const portrait = 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1200&q=90'
 const scenes = [
