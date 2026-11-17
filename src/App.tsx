@@ -26,29 +26,27 @@ function App() {
         <a className="wordmark" href="#" aria-label="Avatara home">ava<span>tara</span><i>.</i></a>
         <nav className={menuOpen ? 'navigation is-open' : 'navigation'}>
           <a href="#product" onClick={closeMenu}>Product</a>
-          <a href="#how" onClick={closeMenu}>How it works</a>
           <a href="#use-cases" onClick={closeMenu}>Use cases</a>
+          <a href="#how" onClick={closeMenu}>How it works</a>
           <a href="#faq" onClick={closeMenu}>FAQ</a>
         </nav>
-        <div className="header-cta"><a href="#faq">Explore</a><button onClick={goToCreate}>Get early access <ArrowUpRight size={15}/></button></div>
+        <a className="nav-login" href="#get-started">Get started <ArrowUpRight size={13}/></a>
         <button className="menu-toggle" aria-label="Toggle menu" onClick={() => setMenuOpen(!menuOpen)}>{menuOpen ? <X/> : <Menu/>}</button>
       </header>
 
       <section className="hero">
-        <div className="hero-copy">
-          <div className="eyebrow"><span/> THE FUTURE OF VIDEO, PERSONALIZED</div>
-          <h1>Be there.<br/><em>Even when</em><br/>you’re not.</h1>
-          <p className="hero-lede">Create an AI version of yourself and turn your words into video. A more personal way to share ideas, teach, and connect — without being on camera every time.</p>
-          <div className="hero-buttons"><button className="primary-button" onClick={goToCreate}>Create your avatar <ArrowRight size={17}/></button><a className="secondary-link" href="#product"><span><Play size={11} fill="currentColor"/></span> See how it works</a></div>
-          <div className="hero-footnote"><span className="tiny-check"><Check size={12}/></span> Made for creators, teams and educators</div>
+        <div className="hero-backdrop" aria-hidden="true"/>
+        <div className="hero-center">
+          <div className="hero-proof"><span className="proof-dot"/> YOUR STORY, IN YOUR OWN IMAGE</div>
+          <h1>Your presence.<br/><em>Reimagined.</em></h1>
+          <p>Turn a photo and your words into expressive AI avatar videos.<br className="desktop-break"/> Share ideas, teach, and connect — even when you’re away.</p>
+          <div className="hero-buttons">
+            <button className="primary-button" onClick={goToCreate}>Create your avatar <ArrowRight size={16}/></button>
+            <a className="secondary-link" href="#product"><span><Play size={10} fill="currentColor"/></span> Explore the experience</a>
+          </div>
+          <div className="hero-trust">A more human way to create video <i/> Built for creators, teams and educators</div>
         </div>
-        <div className="hero-image-wrap">
-          <div className="hero-image"><img src={portrait} alt="Portrait representing an AI avatar" /></div>
-          <div className="image-caption"><div><span className="caption-kicker">YOUR DIGITAL PRESENCE</span><strong>A familiar face. A new way to communicate.</strong></div><span className="caption-arrow"><ArrowUpRight size={19}/></span></div>
-          <div className="image-index">01 <i/> 03</div>
-          <div className="blue-disc"/>
-        </div>
-        <div className="hero-side-note">A NEW KIND OF ON-CAMERA PRESENCE</div>
+        <a className="scroll-cue" href="#product"><span>SCROLL TO EXPLORE</span><i><ArrowRight size={12}/></i></a>
       </section>
 
       <section className="intro-band" id="product">
