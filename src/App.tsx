@@ -218,8 +218,6 @@ function App() {
               <div className="possibility-copy">
                 <span>{item.label}</span>
                 <h3>{item.title.split('\n').map((line,index)=><span key={index}>{line}</span>)}</h3>
-                <p>{item.copy}</p>
-                <a href="#get-started">Make it personal <ArrowUpRight size={15}/></a>
               </div>
             </article>
           ))}
