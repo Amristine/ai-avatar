@@ -55,76 +55,110 @@ function App() {
         <a className="scroll-cue" href="#product"><span>SCROLL TO EXPLORE</span><i><ArrowRight size={12}/></i></a>
       </section>
 
-      <section className="intro-band" id="product">
-        <span className="intro-label">MEET AVATARA</span>
-        <p>A familiar face. A message worth sharing. <em>Video creation that feels more personal — and takes less setup.</em></p>
-        <a href="#how">Explore the process <ArrowRight size={14}/></a>
-      </section>
-
-      <section className="product-section section">
-        <div className="section-intro-row">
-          <div><span className="section-kicker">01 — THE AVATARA EXPERIENCE</span><h2>One photo is all<br/>it <em>takes to begin.</em></h2></div>
-          <p>Your portrait gives your avatar a face. Your script gives it something to say. Avatara brings both together in a video made to feel personal.</p>
+      <section className="chapter-section" id="product">
+        <div className="chapter-heading">
+          <span className="section-kicker">INSIDE AVATARA</span>
+          <h2>A more personal way<br/><em>to show up.</em></h2>
+          <p>Explore what you can create, how it comes together, and where your avatar can take your message.</p>
         </div>
-        <div className="product-showcase">
-          <div className="showcase-photo">
-            <img src={portrait} alt="Portrait illustrating an avatar source photo"/>
-            <span className="showcase-tag">01 / YOUR PORTRAIT</span>
-            <div className="photo-note"><span>Start with a photo</span><small>Choose an image you have permission to use.</small></div>
-          </div>
-          <div className="showcase-connector"><span><Sparkles size={19}/></span><i/></div>
-          <div className="showcase-screen">
-            <div className="screen-top"><span className="screen-dot"/><span className="screen-dot"/><span className="screen-dot"/><small>AVATARA STUDIO</small></div>
-            <div className="screen-preview"><img src={portrait} alt="Illustrative AI avatar video preview"/><span className="preview-play"><Play size={18} fill="currentColor"/></span><span className="preview-label">VIDEO PREVIEW</span></div>
-            <div className="screen-bottom"><div><span>YOUR AVATAR VIDEO</span><strong>Your message, brought to life.</strong></div><span className="screen-duration">00:24</span></div>
-          </div>
-          <div className="showcase-caption">A simple creative flow — from the image you choose to the message you want to share.</div>
-        </div>
-        <div className="feature-row">
-          <article><span className="feature-icon"><Image size={18}/></span><div><strong>Your likeness</strong><p>Start with a portrait you own or have permission to use.</p></div></article>
-          <article><span className="feature-icon"><Mic2 size={18}/></span><div><strong>Your message</strong><p>Bring the words with a script or audio recording.</p></div></article>
-          <article><span className="feature-icon"><Video size={18}/></span><div><strong>Your video</strong><p>Review the result and share it with your audience.</p></div></article>
-        </div>
-        <p className="visual-disclaimer">Concept preview for illustration. It is not a live generated video.</p>
-      </section>
 
-      <section className="statement-section">
-        <div className="statement-image"><img src="https://images.unsplash.com/photo-1490730141103-6cac27aaab94?auto=format&fit=crop&w=1500&q=85" alt="Sunlit open landscape"/></div>
-        <div className="statement-overlay"/>
-        <div className="statement-inner"><span className="section-kicker">02 — MORE THAN A VIDEO</span><h2>Show up with<br/><em>a little more you.</em></h2><p>For the update you need to send, the lesson you want to teach, or the idea that deserves a face and a voice.</p><a href="#use-cases">Find your use for Avatara <ArrowRight size={15}/></a></div>
-        <span className="statement-index">A NEW WAY TO BE PRESENT</span>
-      </section>
+        <div className="chapter-list">
+          <article className="chapter-row">
+            <div className="chapter-preview preview-photo">
+              <img src={portrait} alt="Portrait preview for the avatar creation experience"/>
+              <span className="preview-pill">THE AVATARA EXPERIENCE</span>
+              <span className="preview-corner"><Sparkles size={14}/></span>
+            </div>
+            <div className="chapter-copy">
+              <span className="chapter-index">01 / THE EXPERIENCE</span>
+              <h3>One photo.<br/><em>A whole new presence.</em></h3>
+              <p>Start with a portrait and a message. Bring them together in an AI avatar video that feels more personal than another talking-head recording.</p>
+              <a href="#how">Explore the process <ArrowUpRight size={15}/></a>
+            </div>
+          </article>
 
-      <section className="use-section section" id="use-cases">
-        <div className="section-intro-row use-intro">
-          <div><span className="section-kicker">03 — MADE FOR YOUR WORLD</span><h2>One avatar.<br/><em>Many stories.</em></h2></div>
-          <p>From a creator’s next post to a team’s product update, make every message feel a little more human.</p>
-        </div>
-        <div className="use-grid">{scenes.map((scene,index)=><article className="use-card" key={scene.name}><div className="use-image"><img src={scene.image} alt={scene.name}/><span className="use-number">0{index+1}</span><div className="use-image-shade"/><div className="use-image-copy"><small>{scene.name}</small><h3>{scene.title}</h3><p>{scene.copy}</p><a href="#get-started">Make it yours <ArrowUpRight size={15}/></a></div></div></article>)}</div>
-      </section>
+          <article className="chapter-row">
+            <div className="chapter-preview">
+              <img src={scenes[0].image} alt="Creator working outdoors in warm evening light"/>
+              <span className="preview-pill">FOR CREATORS</span>
+            </div>
+            <div className="chapter-copy">
+              <span className="chapter-index">02 / YOUR PRESENCE</span>
+              <h3>Show up, even<br/><em>when life gets busy.</em></h3>
+              <p>Create intros, updates and social videos without setting up a camera every time. Keep your content moving while you focus on the next idea.</p>
+              <a href="#get-started">Create for your audience <ArrowUpRight size={15}/></a>
+            </div>
+          </article>
 
-      <section className="how-section" id="how">
-        <div className="how-inner">
-          <div className="how-title"><span className="section-kicker">04 — SIMPLE BY DESIGN</span><h2>From photo<br/>to <em>hello.</em></h2><p>No studio setup. No complicated production checklist. Just three clear steps to get your message ready.</p><a href="#get-started" className="text-cta">Start creating <ArrowRight size={15}/></a></div>
-          <div className="how-list">
-            <article><span className="how-number">01</span><div className="how-step-icon"><Image size={20}/></div><div><h3>Choose your portrait</h3><p>Upload a clear image of yourself or someone who has given consent.</p></div><ArrowUpRight size={18}/></article>
-            <article><span className="how-number">02</span><div className="how-step-icon"><Mic2 size={20}/></div><div><h3>Add the words</h3><p>Write a script or add audio to give your avatar its message.</p></div><ArrowUpRight size={18}/></article>
-            <article><span className="how-number">03</span><div className="how-step-icon"><Video size={20}/></div><div><h3>Create and share</h3><p>Review your video and share it wherever your audience is.</p></div><ArrowUpRight size={18}/></article>
-          </div>
+          <article className="chapter-row">
+            <div className="chapter-preview preview-team">
+              <img src={scenes[1].image} alt="Team collaborating around a table"/>
+              <span className="preview-pill">FOR TEAMS & EDUCATORS</span>
+              <div className="preview-note"><span>One message</span><strong>Many people reached.</strong></div>
+            </div>
+            <div className="chapter-copy">
+              <span className="chapter-index">03 / MANY STORIES</span>
+              <h3>Make every message<br/><em>feel more human.</em></h3>
+              <p>From product updates and team announcements to lessons and explainers, give the message a familiar face and a consistent voice.</p>
+              <a href="#get-started">Find your use for Avatara <ArrowUpRight size={15}/></a>
+            </div>
+          </article>
+
+          <article className="chapter-row">
+            <div className="chapter-preview preview-workflow">
+              <div className="workflow-window">
+                <div className="workflow-top"><span/><span/><span/><small>AVATARA / YOUR WORKFLOW</small></div>
+                <div className="workflow-items">
+                  <div><span className="workflow-icon"><Image size={15}/></span><span><b>Your photo</b><small>Choose a portrait</small></span><i>01</i></div>
+                  <div><span className="workflow-icon"><Mic2 size={15}/></span><span><b>Your message</b><small>Add script or audio</small></span><i>02</i></div>
+                  <div><span className="workflow-icon"><Video size={15}/></span><span><b>Your video</b><small>Review and share</small></span><i>03</i></div>
+                </div>
+              </div>
+            </div>
+            <div className="chapter-copy">
+              <span className="chapter-index">04 / SIMPLE BY DESIGN</span>
+              <h3>From first photo<br/><em>to first hello.</em></h3>
+              <p>Choose a portrait, add the words you want to say, then generate and review your video. A clear path from idea to finished message.</p>
+              <a href="#get-started">Start creating <ArrowUpRight size={15}/></a>
+            </div>
+          </article>
+
+          <article className="chapter-row">
+            <div className="chapter-preview preview-questions">
+              <div className="questions-window">
+                <span className="questions-kicker">A FEW THINGS TO KNOW</span>
+                <strong>Good questions.<br/><em>Clear answers.</em></strong>
+                <div className="question-line"><span>What do I need to get started?</span><i>+</i></div>
+                <div className="question-line"><span>Can I use my video commercially?</span><i>+</i></div>
+                <div className="question-line"><span>Can I create an avatar of someone else?</span><i>+</i></div>
+              </div>
+            </div>
+            <div className="chapter-copy">
+              <span className="chapter-index">05 / BEFORE YOU BEGIN</span>
+              <h3>A few questions.<br/><em>Thoughtfully answered.</em></h3>
+              <p>Learn what you need to get started, how to use your own assets, and why permission matters when creating an avatar.</p>
+              <a href="#faq">Read the FAQs <ArrowUpRight size={15}/></a>
+            </div>
+          </article>
         </div>
       </section>
 
       <section className="faq-section section" id="faq">
-        <div className="faq-heading"><span className="section-kicker">A FEW THINGS TO KNOW</span><h2>Curious?<br/><em>We’ve got you.</em></h2><p>Some quick answers before you create your first avatar.</p><div className="faq-aside"><span><Sparkles size={17}/></span><div><strong>Made to feel simple.</strong><small>Have another question? We’d love to hear from you.</small><a href="mailto:hello@ai-avatar.app">Talk to our team <ArrowUpRight size={13}/></a></div></div></div>
-        <div className="faq-list">{faqs.map(([question,answer],index)=><article className={faqOpen===index?'faq-item active':'faq-item'} key={question}><button onClick={()=>setFaqOpen(faqOpen===index?null:index)} aria-expanded={faqOpen===index}><span className="faq-index">0{index+1}</span><span className="faq-question">{question}</span><span className="faq-toggle">{faqOpen===index?<X size={15}/>:<ChevronDown size={16}/>}</span></button>{faqOpen===index&&<p>{answer}</p>}</article>)}</div>
+        <div className="faq-intro">
+          <span className="section-kicker">GOOD TO KNOW</span>
+          <h2>Before you<br/><em>press create.</em></h2>
+          <p>A few straightforward answers to help you get started with confidence.</p>
+          <a href="mailto:hello@ai-avatar.app">Still have a question? <ArrowUpRight size={14}/></a>
+        </div>
+        <div className="faq-list">{faqs.map(([question,answer],index)=><article className={faqOpen===index?'faq-item active':'faq-item'} key={question}><button onClick={()=>setFaqOpen(faqOpen===index?null:index)} aria-expanded={faqOpen===index}><span className="faq-number">0{index+1}</span><span>{question}</span><span className="faq-toggle">{faqOpen===index?<X size={15}/>:<ChevronDown size={16}/>}</span></button>{faqOpen===index&&<p>{answer}</p>}</article>)}</div>
       </section>
 
       <section className="final-cta" id="get-started">
-        <div className="cta-image"><img src="https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?auto=format&fit=crop&w=1600&q=85" alt="Soft sunlit landscape"/></div><div className="cta-image-shade"/>
+        <div className="final-cta-image"><img src="https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?auto=format&fit=crop&w=1800&q=90" alt="Warm evening light across a peaceful landscape"/></div>
+        <div className="final-cta-shade"/>
         <div className="final-cta-inner"><span className="section-kicker">YOUR STORY STARTS HERE</span><h2>Ready to put<br/><em>yourself in the picture?</em></h2><p>Create a video that carries your face, your voice and your message.</p><a className="light-button" href="mailto:hello@ai-avatar.app?subject=Avatara%20early%20access">Get early access <ArrowUpRight size={16}/></a><span className="cta-note">Only use images and voices you have permission to use.</span></div>
-        <div className="cta-stamp"><span>AVA</span><strong>YOUR<br/>STORY</strong><small>MADE PERSONAL</small></div>
+        <span className="cta-mark">ava<span>.</span></span>
       </section>
-
       <footer className="footer"><a className="wordmark" href="#"><span className="wordmark-mark">a</span>vatara<span className="wordmark-period">.</span></a><span>© 2026 Avatara. Create with care.</span><div><a href="#product">Product</a><a href="#how">How it works</a><a href="#faq">FAQ</a></div></footer>
     </main>
   )
