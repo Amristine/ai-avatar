@@ -5,18 +5,18 @@ import {
   UserRound, Users, Video, X,
 } from 'lucide-react'
 
-// Add your final media URLs here later. Empty strings intentionally render branded placeholders.
+// Images stored in public/assets. Keep filenames in sync with the repository.
 const mediaAssets = {
-  heroBackground: '',
-  studioPortrait: '/assets/avatar-portrait.webp',
+  heroBackground: '/assets/hero.png',
+  studioPortrait: '/assets/Warm Studio Portrait of a South Asian Woman.png',
   studioVideo: '',
-  studioVideoPoster: '/assets/studio-video-poster.webp',
-  creator: '/assets/creator-use-case.webp',
-  team: '/assets/team-use-case.webp',
-  educator: '/assets/educator-use-case.webp',
-  statement: '/assets/brand-story-background.webp',
+  studioVideoPoster: '/assets/Blue-Lit Content Creator Studio.png',
+  creator: '/assets/Tech Presenter with Avatara Studio Setup.png',
+  team: '/assets/Collaborative Office Team Around Laptop.png',
+  educator: '/assets/Online Math Lesson in Studio.png',
+  statement: '/assets/Elegant Blue Wave Abstraction.png',
   closingVideo: '',
-  closingVideoPoster: '/assets/closing-video-poster.webp',
+  closingVideoPoster: '/assets/Modern Video Creation Studio Setup.png',
 }
 
 const useCases = [
