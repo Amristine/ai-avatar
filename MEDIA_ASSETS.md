@@ -24,3 +24,17 @@ When assets are ready, add their publicly accessible URLs in the `mediaAssets` o
 - For video, MP4/H.264 is a practical browser-compatible format. Keep clips short and optimized for web delivery.
 - The hero keeps its current landscape fallback when `heroBackground` is empty.
 - All other empty slots show a designed Avatara placeholder, so the page remains complete until assets are added.
+
+
+## Assets currently wired into the site
+
+- `heroBackground`: left empty so the existing full-width landscape fallback remains active
+- `studioPortrait`: `/assets/avatar-portrait.webp`
+- `studioVideoPoster`: `/assets/studio-video-poster.webp`
+- `creator`: `/assets/creator-use-case.webp`
+- `team`: `/assets/team-use-case.webp`
+- `educator`: `/assets/educator-use-case.webp`
+- `statement`: `/assets/brand-story-background.webp`
+- `closingVideoPoster`: `/assets/closing-video-poster.webp`
+
+The `studioVideo` and `closingVideo` properties intentionally remain empty until real avatar MP4 files are available. Poster images are illustrative stills, not generated video output.
