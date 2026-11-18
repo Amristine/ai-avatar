@@ -9,11 +9,13 @@ import {
 const mediaAssets = {
   studioPortrait: '',
   studioVideo: '',
+  studioVideoPoster: '',
   creator: '',
   team: '',
   educator: '',
   statement: '',
   closingVideo: '',
+  closingVideoPoster: '',
 }
 
 const useCases = [
@@ -172,7 +174,7 @@ function App() {
                 <div className="editor-preview">
                   <div className="preview-head"><span>YOUR AVATAR PREVIEW</span><span className="preview-quality">16:9 · HD</span></div>
                   <div className="preview-image">
-                    {mediaAssets.studioVideo ? <video src={mediaAssets.studioVideo} controls playsInline poster={mediaAssets.studioPortrait || undefined}/> : <MediaPlaceholder kind="video" label="YOUR AVATAR VIDEO"/>}
+                    {mediaAssets.studioVideo ? <video src={mediaAssets.studioVideo} controls playsInline poster={mediaAssets.studioPortrait || undefined}/> : mediaAssets.studioVideoPoster ? <img className="poster-image" src={mediaAssets.studioVideoPoster} alt="Illustrative avatar video poster"/> : <MediaPlaceholder kind="video" label="YOUR AVATAR VIDEO"/>}
                   </div>
                   <div className="preview-footer"><div><span>READY FOR YOUR MESSAGE</span><b>A face for every story.</b></div><div className="preview-wave"><i/><i/><i/><i/><i/><i/><i/><i/><i/><i/><i/><i/><i/><i/><i/></div></div>
                 </div>
@@ -250,7 +252,7 @@ function App() {
       <section className="final-section" id="get-started">
         <div className="final-copy"><span className="section-label light-label">YOUR STORY STARTS HERE</span><h2>Make your presence<br/><em>go a little further.</em></h2><p>Bring your face, your voice and your message together. Be among the first to experience Avatara.</p><a className="button button-light" href="mailto:hello@ai-avatar.app?subject=Avatara%20early%20access">Get early access <ArrowUpRight size={15}/></a><span className="permission-note"><ShieldCheck size={13}/> Only use images and voices you have permission to use.</span></div>
         <div className="final-portrait">
-          {mediaAssets.closingVideo ? <video src={mediaAssets.closingVideo} controls playsInline/> : <MediaPlaceholder kind="video" label="YOUR AVATAR VIDEO"/>}
+          {mediaAssets.closingVideo ? <video src={mediaAssets.closingVideo} controls playsInline/> : mediaAssets.closingVideoPoster ? <img className="poster-image" src={mediaAssets.closingVideoPoster} alt="Illustrative avatar video poster"/> : <MediaPlaceholder kind="video" label="YOUR AVATAR VIDEO"/>}
           <span className="final-preview-label">YOUR VIDEO / PREVIEW</span>
           <div className="final-caption"><span>YOUR STORY, IN MOTION</span><b>A little more you.</b></div>
         </div>
