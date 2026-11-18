@@ -98,7 +98,7 @@ function App() {
       </header>
 
       <section className="hero">
-        <div className="hero-landscape" aria-hidden="true"/>
+        <div className="hero-landscape" aria-hidden="true" style={mediaAssets.heroBackground ? { backgroundImage: `url(${mediaAssets.heroBackground})` } : undefined}/>
         <div className="hero-wash" aria-hidden="true"/>
         <div className="hero-content">
           <div className="hero-orbit" aria-hidden="true">
