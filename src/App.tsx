@@ -7,15 +7,16 @@ import {
 
 // Add your final media URLs here later. Empty strings intentionally render branded placeholders.
 const mediaAssets = {
-  studioPortrait: '',
+  heroBackground: '',
+  studioPortrait: '/assets/avatar-portrait.webp',
   studioVideo: '',
-  studioVideoPoster: '',
-  creator: '',
-  team: '',
-  educator: '',
-  statement: '',
+  studioVideoPoster: '/assets/studio-video-poster.webp',
+  creator: '/assets/creator-use-case.webp',
+  team: '/assets/team-use-case.webp',
+  educator: '/assets/educator-use-case.webp',
+  statement: '/assets/brand-story-background.webp',
   closingVideo: '',
-  closingVideoPoster: '',
+  closingVideoPoster: '/assets/closing-video-poster.webp',
 }
 
 const useCases = [

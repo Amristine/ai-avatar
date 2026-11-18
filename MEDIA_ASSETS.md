@@ -1,6 +1,6 @@
 # Avatara media slots
 
-The landing page is designed to work before final photography and avatar footage are ready. Branded placeholders render automatically while a slot is empty.
+The generated still-image assets are committed in `public/assets/` and wired into `src/App.tsx`. Branded placeholders remain available for any slot without an image.
 
 When assets are ready, add their publicly accessible URLs in the `mediaAssets` object near the top of `src/App.tsx`.
 

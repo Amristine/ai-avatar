@@ -497,3 +497,7 @@ img{max-width:100%}
   .statement-orbit-two{width:370px;height:370px;left:88%}
   .statement-glow{left:88%}
 }
+
+
+/* Generated Avatara still-image posters */
+.poster-image{display:block;width:100%;height:100%;object-fit:cover;}
