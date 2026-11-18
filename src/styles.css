@@ -406,3 +406,26 @@
 .faq-section{padding:69px 22px}.faq-inner{grid-template-columns:1fr;gap:25px}.faq-intro h2{font-size:50px}.faq-intro>p{font-size:9px}.faq-item>button{grid-template-columns:22px 1fr 24px;gap:7px;padding:15px 0}.faq-item>button>span:nth-child(2){font-size:9px}.faq-item>p{font-size:8px;margin-left:29px}
 .final-cta{grid-template-columns:1fr;gap:35px;min-height:0;padding:68px 23px 58px}.final-cta h2{font-size:55px}.final-cta p{font-size:9px;max-width:290px}.cta-product-preview{justify-self:center;width:min(100%,330px);transform:rotate(.5deg)}.cta-preview-image{height:190px}.cta-decoration{font-size:120px;right:-5px;top:auto;bottom:0}
 }
+
+/* Readability and layout refinements */
+.chapter-copy p{font-size:12px;line-height:1.85}
+.chapter-copy>a{font-size:9px}
+.chapter-index{font-size:8px}
+.faq-section{display:block}
+.faq-item>button>span:nth-child(2){font-size:12px}
+.faq-item>p{font-size:11px}
+.faq-intro>p{font-size:12px}
+.final-cta p{font-size:12px}
+.footer>span,.footer>div a{font-size:9px}
+@media(max-width:650px){
+.chapter-row{grid-template-columns:minmax(112px,37%) minmax(0,1fr);gap:13px;align-items:stretch}
+.chapter-preview{height:auto;min-height:128px}
+.chapter-copy{align-self:center}
+.chapter-copy h3{font-size:19px;line-height:1.02}
+.chapter-copy p{font-size:9.5px;line-height:1.65}
+.chapter-copy>a{font-size:8px}
+.chapter-index{font-size:6px}
+.faq-item>button>span:nth-child(2){font-size:10px}
+.faq-item>p,.faq-intro>p{font-size:9px}
+.final-cta p{font-size:10px}
+}
