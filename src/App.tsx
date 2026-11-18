@@ -1,52 +1,77 @@
 import { useState } from 'react'
 import {
-  ArrowRight,
-  ArrowUpRight,
-  Check,
-  ChevronDown,
-  Image,
-  Menu,
-  Mic2,
-  Play,
-  ShieldCheck,
-  Sparkles,
-  Video,
-  X,
+  ArrowRight, ArrowUpRight, Check, ChevronDown, Clapperboard,
+  GraduationCap, Image, Menu, Mic2, Play, ShieldCheck, Sparkles,
+  UserRound, Users, Video, X,
 } from 'lucide-react'
 
-const portrait = 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1100&q=90'
+// Add your final media URLs here later. Empty strings intentionally render branded placeholders.
+const mediaAssets = {
+  studioPortrait: '',
+  studioVideo: '',
+  creator: '',
+  team: '',
+  educator: '',
+  statement: '',
+  closingVideo: '',
+}
+
 const useCases = [
   {
     number: '01',
     label: 'FOR CREATORS',
     title: 'Stay present\nbetween posts.',
     copy: 'Turn ideas, announcements and regular updates into video without rebuilding your recording setup every time.',
-    image: 'https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1200&q=88',
-    className: 'creator-card',
+    image: mediaAssets.creator,
+    kind: 'creator' as const,
   },
   {
     number: '02',
     label: 'FOR TEAMS',
     title: 'Give every update\na familiar face.',
     copy: 'Make product explainers, internal updates and customer messages feel more personal and consistent.',
-    image: 'https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1200&q=88',
-    className: 'team-card',
+    image: mediaAssets.team,
+    kind: 'team' as const,
   },
   {
     number: '03',
     label: 'FOR EDUCATORS',
     title: 'Make lessons feel\ncloser to the learner.',
     copy: 'Introduce a topic, guide a lesson or share a quick explanation with a presenter your audience recognizes.',
-    image: 'https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1200&q=88',
-    className: 'educator-card',
+    image: mediaAssets.educator,
+    kind: 'educator' as const,
   },
 ]
+
 const faqs = [
   ['What is an AI avatar?', 'An AI avatar is a digital presenter that can deliver a script in a generated video. Avatara is designed to make that process feel simple and personal.'],
   ['What do I need to create a video?', 'Start with a clear portrait of yourself or someone who has explicitly agreed to have their likeness used. You can then provide a script or audio for the message.'],
   ['Can I use someone else’s face or voice?', 'Only use images and voices when you have the person’s informed permission. Do not use Avatara to impersonate someone or create misleading content.'],
   ['Can I use my videos commercially?', 'Commercial usage depends on your product plan and the rights to the photos, voices and other assets you provide. Check the applicable terms before publishing.'],
 ]
+
+type MediaKind = 'portrait' | 'video' | 'creator' | 'team' | 'educator'
+
+function MediaPlaceholder({ kind, label, className = '' }: { kind: MediaKind; label: string; className?: string }) {
+  const Icon = kind === 'team' ? Users : kind === 'educator' ? GraduationCap : kind === 'video' ? Clapperboard : kind === 'creator' ? Sparkles : UserRound
+  return (
+    <div className={`media-placeholder media-placeholder-${kind} ${className}`} role="img" aria-label={label}>
+      <div className="placeholder-grid" aria-hidden="true"/>
+      <span className="placeholder-kicker">AVATARA / MEDIA SLOT</span>
+      <div className="placeholder-art" aria-hidden="true">
+        <span className="placeholder-orbit orbit-one"/>
+        <span className="placeholder-orbit orbit-two"/>
+        <span className="placeholder-disc"/>
+        <span className="placeholder-person"><Icon size={kind === 'portrait' || kind === 'video' ? 62 : 48} strokeWidth={1}/></span>
+        {kind === 'video' && <span className="placeholder-play"><Play size={15} fill="currentColor"/></span>}
+        {kind === 'team' && <span className="placeholder-mini-card">ONE MESSAGE · MANY PEOPLE</span>}
+        {kind === 'educator' && <span className="placeholder-mini-card">LEARN · CONNECT · SHARE</span>}
+      </div>
+      <span className="placeholder-label">{label}</span>
+      <span className="placeholder-subline">Your image or video will go here</span>
+    </div>
+  )
+}
 
 function App() {
   const [menuOpen, setMenuOpen] = useState(false)
@@ -58,7 +83,7 @@ function App() {
     <main>
       <header className="site-header">
         <a className="brand" href="#" aria-label="Avatara home">
-          <span className="brand-symbol">a</span><span>avatara</span><i>.</i>
+          <span className="brand-symbol">a</span><span>vatara</span><i>.</i>
         </a>
         <nav className={menuOpen ? 'site-nav is-open' : 'site-nav'} aria-label="Main navigation">
           <a href="#product" onClick={closeMenu}>The studio</a>
@@ -133,7 +158,7 @@ function App() {
                   <div className="input-panel portrait-panel">
                     <div className="panel-heading"><span>01 / SOURCE PORTRAIT</span><span className="panel-check"><Check size={11}/></span></div>
                     <div className="portrait-upload">
-                      <img src={portrait} alt="Portrait sample in the Avatara studio concept"/>
+                      {mediaAssets.studioPortrait ? <img src={mediaAssets.studioPortrait} alt="Portrait sample in the Avatara studio concept"/> : <MediaPlaceholder kind="portrait" label="YOUR PORTRAIT"/>}
                       <div className="portrait-overlay"><span>YOUR PORTRAIT</span><small>Clear, front-facing image</small></div>
                     </div>
                     <div className="panel-foot"><span><Image size={12}/> Portrait selected</span><small>JPG · PNG</small></div>
@@ -146,14 +171,16 @@ function App() {
                 </div>
                 <div className="editor-preview">
                   <div className="preview-head"><span>YOUR AVATAR PREVIEW</span><span className="preview-quality">16:9 · HD</span></div>
-                  <div className="preview-image"><img src={portrait} alt="Illustrative avatar video preview"/><div className="preview-vignette"/><span className="preview-play"><Play size={17} fill="currentColor"/></span><span className="preview-time">00:24</span></div>
+                  <div className="preview-image">
+                    {mediaAssets.studioVideo ? <video src={mediaAssets.studioVideo} controls playsInline poster={mediaAssets.studioPortrait || undefined}/> : <MediaPlaceholder kind="video" label="YOUR AVATAR VIDEO"/>}
+                  </div>
                   <div className="preview-footer"><div><span>READY FOR YOUR MESSAGE</span><b>A face for every story.</b></div><div className="preview-wave"><i/><i/><i/><i/><i/><i/><i/><i/><i/><i/><i/><i/><i/><i/><i/></div></div>
                 </div>
               </div>
               <div className="studio-timeline"><span className="timeline-label">TIMELINE</span><div className="timeline-track"><i/><i/><i/><i/><i/><i/><i/><i/><i/><i/><i/><i/></div><span className="timeline-duration">00:24</span></div>
             </div>
           </div>
-          <div className="studio-disclaimer"><Sparkles size={13}/> Illustrative interface concept — not a live generated avatar result.</div>
+          <div className="studio-disclaimer"><Sparkles size={13}/> Illustrative interface concept — replace the media placeholders with your real assets.</div>
         </div>
 
         <div className="studio-benefits">
@@ -164,7 +191,7 @@ function App() {
       </section>
 
       <section className="brand-statement">
-        <div className="statement-image"><img src="https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?auto=format&fit=crop&w=2000&q=90" alt="Golden light across a peaceful open landscape"/></div>
+        {mediaAssets.statement ? <div className="statement-image"><img src={mediaAssets.statement} alt="Avatara brand visual"/></div> : <div className="statement-visual-placeholder"><span className="statement-orbit statement-orbit-one"/><span className="statement-orbit statement-orbit-two"/><span className="statement-glow"/></div>}
         <div className="statement-shade"/>
         <div className="statement-content">
           <span className="section-label light-label">02 / THE IDEA BEHIND IT</span>
@@ -182,8 +209,8 @@ function App() {
         </div>
         <div className="possibility-grid">
           {useCases.map((item) => (
-            <article className={'possibility-card '+item.className} key={item.number}>
-              <img src={item.image} alt={item.name}/>
+            <article className={'possibility-card '+item.kind+'-card'} key={item.number}>
+              {item.image ? <img src={item.image} alt={item.label}/> : <MediaPlaceholder kind={item.kind} label={item.label} className="possibility-media"/>}
               <div className="possibility-shade"/>
               <span className="possibility-number">{item.number}</span>
               <div className="possibility-copy">
@@ -222,7 +249,11 @@ function App() {
 
       <section className="final-section" id="get-started">
         <div className="final-copy"><span className="section-label light-label">YOUR STORY STARTS HERE</span><h2>Make your presence<br/><em>go a little further.</em></h2><p>Bring your face, your voice and your message together. Be among the first to experience Avatara.</p><a className="button button-light" href="mailto:hello@ai-avatar.app?subject=Avatara%20early%20access">Get early access <ArrowUpRight size={15}/></a><span className="permission-note"><ShieldCheck size={13}/> Only use images and voices you have permission to use.</span></div>
-        <div className="final-portrait"><img src={portrait} alt="Portrait used as an illustrative avatar video still"/><div className="final-portrait-overlay"/><span className="final-play"><Play size={17} fill="currentColor"/></span><span className="final-preview-label">AVATARA / AN ILLUSTRATIVE PREVIEW</span><div className="final-caption"><span>YOUR STORY, IN MOTION</span><b>A little more you.</b></div></div>
+        <div className="final-portrait">
+          {mediaAssets.closingVideo ? <video src={mediaAssets.closingVideo} controls playsInline/> : <MediaPlaceholder kind="video" label="YOUR AVATAR VIDEO"/>}
+          <span className="final-preview-label">YOUR VIDEO / PREVIEW</span>
+          <div className="final-caption"><span>YOUR STORY, IN MOTION</span><b>A little more you.</b></div>
+        </div>
         <span className="final-watermark">a.</span>
       </section>
 
