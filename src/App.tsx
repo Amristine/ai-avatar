@@ -118,7 +118,6 @@ function App() {
           </div>
           <div className="hero-caption">A little more you. In every message.</div>
         </div>
-        <a href="#product" className="scroll-indicator"><span>SCROLL TO DISCOVER</span><i><ArrowRight size={12}/></i></a>
       </section>
 
       <section className="manifesto-strip">
