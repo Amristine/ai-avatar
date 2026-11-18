@@ -7,7 +7,7 @@ import {
 
 // Images stored in public/assets. Keep filenames in sync with the repository.
 const mediaAssets = {
-  heroBackground: '/assets/hero.png',
+  heroBackground: '/assets/Warm Studio Portrait of a South Asian Woman.png',
   studioPortrait: '/assets/Warm Studio Portrait of a South Asian Woman.png',
   studioVideo: '',
   studioVideoPoster: '/assets/Blue-Lit Content Creator Studio.png',
