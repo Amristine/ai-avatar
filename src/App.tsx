@@ -80,7 +80,7 @@ function App() {
             </div>
           </article>
 
-          <article className="chapter-row">
+          <article className="chapter-row" id="use-cases">
             <div className="chapter-preview preview-creators">
               <img src={scenes[0].image} alt="A creator working at a laptop"/>
               <span className="preview-pill">FOR CREATORS</span>
@@ -108,7 +108,7 @@ function App() {
             </div>
           </article>
 
-          <article className="chapter-row">
+          <article className="chapter-row" id="how">
             <div className="chapter-preview preview-workflow">
               <div className="workflow-window">
                 <div className="workflow-top"><span/><span/><span/><small>YOUR CREATION FLOW</small></div>
